@@ -53,6 +53,12 @@ class SwitchToCppHppCommand( sublime_plugin.TextCommand ):
 		if os.path.isfile( file_path_near + '.inl' ):
 			self.code_files.append( file_path_near + '.inl' )
 
+		if os.path.isfile( file_path_near + '.mm' ):
+			self.code_files.append( file_path_near + '.mm' )
+
+		if os.path.isfile( file_path_near + '.m' ):
+			self.code_files.append( file_path_near + '.m' )
+
 		if 'include' in file_folders:
 			include_index = file_folders.index( 'include' ) 
 			sources_path = file_drive + '/'.join( file_folders[:include_index] ) + '/sources'
@@ -133,5 +139,5 @@ class SwitchToCppHppCommand( sublime_plugin.TextCommand ):
 
 		if file_ext == '.hpp':
 			self.openCppFile( file_drive, file_folders, file_base_name )
-		elif file_ext == '.cpp' or file_ext == '.inl':
+		elif file_ext == '.cpp' or file_ext == '.inl' or file_ext == '.mm' or file_ext == '.m':
 			self.openHppFile( file_drive, file_folders, file_base_name )
